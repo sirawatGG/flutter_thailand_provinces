@@ -5,8 +5,7 @@ class DistrictDao {
   String nameEn;
   int amphureId;
 
-  DistrictDao(
-      {this.id, this.zipCode, this.nameTh, this.nameEn, this.amphureId});
+  DistrictDao({required this.id, required this.zipCode, required this.nameTh, required this.nameEn, required this.amphureId});
 
   factory DistrictDao.fromJson(Map<String, dynamic> json) {
     return DistrictDao(

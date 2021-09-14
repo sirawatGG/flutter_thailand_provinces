@@ -34,8 +34,7 @@ class AddressProvider {
     if (provinceId > 0) {
       sql = sql + " WHERE  P.id = ? ";
     }
-    List<Map<String, dynamic>> mapResult =
-        await ThailandProvincesDatabase.db.rawQuery(sql, ["$provinceId"]);
+    List<Map<String, dynamic>> mapResult = await ThailandProvincesDatabase.db.rawQuery(sql, ["$provinceId"]);
 
     List<AddressDao> listAddress = mapAddressList(mapResult);
     return listAddress;
@@ -49,8 +48,7 @@ class AddressProvider {
             " D.name_en LIKE ? OR D.name_th LIKE ? OR "
             " D.zip_code LIKE ? "
             " ";
-    List<Map<String, dynamic>> mapResult =
-        await ThailandProvincesDatabase.db.rawQuery(sql, [
+    List<Map<String, dynamic>> mapResult = await ThailandProvincesDatabase.db.rawQuery(sql, [
       "%$keyword%",
       "%$keyword%",
       "%$keyword%",
@@ -64,8 +62,7 @@ class AddressProvider {
     return listAddress;
   }
 
-  static Future<List<AddressDao>> searchInProvince(
-      {int provinceId = 1, String keyword = ""}) async {
+  static Future<List<AddressDao>> searchInProvince({int provinceId = 1, String keyword = ""}) async {
     String sql = _BASE_SQL +
         " WHERE  "
             " P.id = ? AND ( "
@@ -74,8 +71,7 @@ class AddressProvider {
             " D.name_en LIKE ? OR D.name_th LIKE ? OR "
             " D.zip_code LIKE ? "
             " ) ";
-    List<Map<String, dynamic>> mapResult =
-        await ThailandProvincesDatabase.db.rawQuery(sql, [
+    List<Map<String, dynamic>> mapResult = await ThailandProvincesDatabase.db.rawQuery(sql, [
       "$provinceId"
           "%$keyword%",
       "%$keyword%",
@@ -91,7 +87,7 @@ class AddressProvider {
   }
 
   static List<AddressDao> mapAddressList(List<Map<String, dynamic>> mapResult) {
-    List<AddressDao> listAddress = List();
+    List<AddressDao> listAddress = [];
     if (mapResult.isNotEmpty) {
       for (Map map in mapResult) {
         AddressDao address = AddressDao(

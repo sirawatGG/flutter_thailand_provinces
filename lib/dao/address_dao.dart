@@ -7,7 +7,7 @@ class AddressDao {
   AmphureDao amphure;
   DistrictDao district;
 
-  AddressDao({this.province, this.amphure, this.district});
+  AddressDao({required this.province, required this.amphure, required this.district});
 
   Map<String, dynamic> toJson() {
     return {

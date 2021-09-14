@@ -5,7 +5,7 @@ class ProvinceDao {
   String nameEn;
   int geographyId;
 
-  ProvinceDao({this.id, this.code, this.nameTh, this.nameEn, this.geographyId});
+  ProvinceDao({required this.id, required this.code, required this.nameTh, required this.nameEn, required this.geographyId});
 
   factory ProvinceDao.fromJson(Map<String, dynamic> json) {
     return ProvinceDao(

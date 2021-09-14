@@ -5,7 +5,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart' as p;
 
 class ThailandProvincesDatabase {
-  static Database db;
+  static late Database db;
 
   static Future<Database> init() async {
     var databasesPath = await getDatabasesPath();
@@ -24,10 +24,8 @@ class ThailandProvincesDatabase {
       } catch (_) {}
 
       // Copy from asset
-      ByteData data = await rootBundle
-          .load("packages/flutter_thailand_provinces/assets/thailand.db");
-      List<int> bytes =
-          data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+      ByteData data = await rootBundle.load("packages/flutter_thailand_provinces/assets/thailand.db");
+      List<int> bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
 
       // Write and flush the bytes written
       await File(path).writeAsBytes(bytes, flush: true);
